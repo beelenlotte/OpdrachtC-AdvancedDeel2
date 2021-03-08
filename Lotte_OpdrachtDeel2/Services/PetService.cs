@@ -53,17 +53,17 @@ namespace Lotte_OpdrachtDeel2.Services
 
         }
 
-        public void AllPetsByType(string Type)
-        {
-            using (var db = new PetDbContext())
-            {
-                var petByType = db.Pets
-                //using (var db = new PetDbContext())
-                //{
-                //    var pet = db.Pets.FirstOrDefault(x => x.Id == petId);
-                //    return pet;
-                //}
-            }
-        }
+        //public void AllPetsByType(string Type)
+        //{
+        //    using (var db = new PetDbContext())
+        //    {
+        //        var petByType = db.Pets
+        //        //using (var db = new PetDbContext())
+        //        //{
+        //        //    var pet = db.Pets.FirstOrDefault(x => x.Id == petId);
+        //        //    return pet;
+        //        //}
+        //    }
+        //}
     }
 }
