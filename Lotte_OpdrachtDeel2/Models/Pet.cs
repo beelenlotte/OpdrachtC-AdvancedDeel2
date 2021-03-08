@@ -13,5 +13,10 @@ namespace Lotte_OpdrachtDeel2.Models
         public DateTime DateOfBirth { get; set; }
         public int PersonId { get; set; }
 
+        public static readonly string[] PetType = new[]
+        {
+            "Dog", "Cat", "Guinea Pig", "Fish", "Rabbit"
+        };
+
     }
 }

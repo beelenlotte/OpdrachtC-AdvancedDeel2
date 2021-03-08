@@ -57,6 +57,19 @@ namespace Lotte_OpdrachtDeel2.Services
             }
         }
 
+
+        public Person ChangePassword(int personIdPasswordChange,  Person password)
+        {
+            using(var db = new PersonDbContext())
+            {
+                var newPassword = db.Persons.First(person => person.Id == personIdPasswordChange);
+                newPassword.Password = password.Password;
+                db.SaveChanges();
+                return newPassword;
+            }
+           
+        }
+
         public void DeletePersonById(int personId)
         {
             using (var db = new PersonDbContext())
@@ -67,6 +80,16 @@ namespace Lotte_OpdrachtDeel2.Services
             }
         }
 
-       
+        
+       public Person Login(string email, string password)
+        {
+            using(var db = new PersonDbContext())
+            {
+                var login = db.Persons.FirstOrDefault(person => person.Email == email);
+                login.Email = email;
+                db.SaveChanges();
+                return login;
+            }
+        }
     }
 }

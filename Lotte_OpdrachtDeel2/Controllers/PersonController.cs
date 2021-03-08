@@ -39,5 +39,43 @@ namespace Lotte_OpdrachtDeel2.Controllers
             personService.DeletePersonById(personId);
             return Ok();
         }
-    }
+
+
+        [HttpPut("ChangePassword")]
+        public ActionResult<Person> ChangePassword(int personIdPasswordChange, UpdatePWPersonDTO password)
+        {
+            var newPassword = new Person();
+            newPassword.Password = password.Password;
+            personService.ChangePassword(personIdPasswordChange, newPassword);
+            return Ok();
+        }
+
+        [HttpGet("Login")]
+        public ActionResult<Person> Login(string email, string password)
+        {
+            bool LoginCorrect = false;
+            var login = personService.Login(email, password);
+
+            if(login.Email == email && login.Password == password)
+            {
+                LoginCorrect = true;
+                return Ok(login);
+            }
+            else
+            {
+                LoginCorrect = false;
+                return Unauthorized();
+            }
+
+            //if(LoginCorrect == true)
+            //{
+            //    return Ok(login);
+            //}
+            //else if(LoginCorrect == false)
+            //{
+            //    return Unauthorized();
+            //}
+        }
+
+    }   
 }

@@ -16,6 +16,17 @@ namespace Lotte_OpdrachtDeel2.Controllers
     {
         PetService petService = new PetService();
 
+        
+
+        [HttpGet("GetAllPetsByType")]
+        public ActionResult<Pet> GetAllPetsByType(string petType)
+        {
+            var type = 
+            PetType = petType;
+
+        }
+
+
         [HttpGet]
         public ActionResult<Pet> GetPet(int petId)
         {
@@ -30,6 +41,7 @@ namespace Lotte_OpdrachtDeel2.Controllers
             pet.Name = newPet.Name;
             pet.PersonId = newPet.PersonId;
             pet.DateOfBirth = newPet.DateOfBirth;
+            pet.
             petService.CreatePet(pet);
             return Ok();
         }
