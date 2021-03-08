@@ -1,14 +1,14 @@
-﻿using Lotte_OpdrachtDeel2.Dto;
+﻿using Lotte_OpdrachtDeel2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lotte_OpdrachtDeel2.Models
+namespace Lotte_OpdrachtDeel2.Dto
 {
-    public class Pet
+    public class UpdatePetDTO
     {
-        public int Id { get; set; }
+        public int PetId { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int PersonId { get; set; }
