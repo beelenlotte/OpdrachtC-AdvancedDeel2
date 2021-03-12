@@ -14,7 +14,7 @@ namespace Lotte_OpdrachtDeel2.Controllers
     [ApiController]
     public class PetController : ControllerBase
     {
-        PetService petService = new PetService();
+        readonly PetService petService = new PetService();
 
         
 
@@ -37,10 +37,12 @@ namespace Lotte_OpdrachtDeel2.Controllers
         [HttpPost]
         public ActionResult CreateNewPet(CreatePetDTO newPet)
         {
-            var pet = new Pet();
-            pet.Name = newPet.Name;
-            pet.PersonId = newPet.PersonId;
-            pet.DateOfBirth = newPet.DateOfBirth;
+            var pet = new Pet
+            {
+                Name = newPet.Name,
+                PersonId = newPet.PersonId,
+                DateOfBirth = newPet.DateOfBirth
+            };
             //pet.PetType = newPet.PetType;
             petService.CreatePet(pet);
             return Ok();
@@ -49,11 +51,13 @@ namespace Lotte_OpdrachtDeel2.Controllers
         [HttpPut]
         public ActionResult<Pet> UpdatePet(int petIdToEdit, UpdatePetDTO petvalues)
         {
-            var petToUpdate = new Pet();
-            petToUpdate.Id = petvalues.PetId;
-            petToUpdate.Name = petvalues.Name;
-            petToUpdate.PersonId = petvalues.PersonId;
-            petToUpdate.DateOfBirth = petvalues.DateOfBirth;
+            var petToUpdate = new Pet
+            {
+                Id = petvalues.PetId,
+                Name = petvalues.Name,
+                PersonId = petvalues.PersonId,
+                DateOfBirth = petvalues.DateOfBirth
+            };
             petService.UpdatePet(petIdToEdit, petToUpdate);
             return Ok();
         }
