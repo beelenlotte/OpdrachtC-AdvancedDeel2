@@ -43,28 +43,16 @@ namespace Lotte_OpdrachtDeel2.Controllers
             houseService.CreateHouse(houseDTOMapped);
             return Ok();
         }
-
-        //[HttpPut]
-        //public async Task<IActionResult> Put(int HouseId, CreateHouseDTO house)
-        //{
-        //    var houseDTOMapped = _mapper.Map<House>(house);
-
-        //    houseService.UpdateHouse(houseId, houseDTOMapped);
-        //    return Ok();
-        //}
+        
         [HttpPut]
-        public ActionResult<House> UpdateHouse(int houseIdToEdit, UpdateHouseDTO housevalues)
+        public async Task<IActionResult> Put(int HouseId, CreateHouseDTO house)
         {
-            var houseToUpdate = new House
-            {
-                StreetName = housevalues.StreetName,
-                HouseNumber = housevalues.HouseNumber,
-                PostalCode = housevalues.PostalCode,
-                City = housevalues.City
-            };
-            houseService.UpdateHouse(houseIdToEdit, houseToUpdate);
+            var houseDTOMapped = _mapper.Map<House>(house);
+            houseService.UpdateHouse(HouseId, houseDTOMapped);
             return Ok();
         }
+
+
 
         [HttpDelete]
         public ActionResult<House> DeleteHouseById(int houseId)
